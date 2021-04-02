@@ -1,7 +1,5 @@
-import {useSelector} from 'react-redux';
-import {selectSubReddit} from "../Features/subRedditSlice";
 import store from "../Store/store";
-import App from '../App';
+
 
 const Reddit = {
     async populateReddit() {

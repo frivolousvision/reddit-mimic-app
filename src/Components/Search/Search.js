@@ -13,7 +13,7 @@ export const Search =(props)=> {
                     <img src={empty} alt="" className="empty-image"/> :
                 props.results.data ? props.results.data.children.map((child, index) => {
                     return (
-                        <Results searchResults={child} key={index} />
+                        <Results searchResults={child} key={index} handleSubChange={props.handleSubChange}/>
                     )
                 }) :
                 <img src={empty} alt="" className="empty-image"/>

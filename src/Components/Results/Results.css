@@ -44,6 +44,7 @@ a {
 .sub-name {
     padding-right: 1rem;
     padding-left: .8rem;
+    cursor: pointer;
 }
 .author {
     font-size: .7rem;
@@ -71,6 +72,6 @@ a {
 }
 @media screen and (max-width: 1100px) {
     .results {
-        width: 90%;
+        width: 98%;
     }
 }
