@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const subRedditOptions = {
     name: "subReddit",
-    initialState: 'r/nature',
+    initialState: '',
     reducers: {
         chooseSub: (state, action) => {
-            state.subReddit = action.payload;
+            return state = action.payload;
         }
     }
 }

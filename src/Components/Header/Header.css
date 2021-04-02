@@ -29,7 +29,8 @@ input {
     height: 1.5rem;
     width: 12rem;
 }
-
-
-
+.reddit-logo:hover {
+    border-radius: 100%;
+    box-shadow: 2px 1px 1px rgb(250, 121, 0);
+}
 

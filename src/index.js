@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from "./Store/store";
 
+//const state = store.getState()
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -19,4 +21,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-console.log(store.state)  
+//console.log(store.getState());  
