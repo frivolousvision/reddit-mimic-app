@@ -9,6 +9,8 @@ export const Search =(props)=> {
     return (
         <div className="searchResults">
                 {!props.results ? <img className="loading" src={redditLogo} alt=""/> :
+                    !props.results.data.after ?
+                    <img src={empty} alt="" className="empty-image"/> :
                 props.results.data ? props.results.data.children.map((child, index) => {
                     return (
                         <Results searchResults={child} key={index} />

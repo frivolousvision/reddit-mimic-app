@@ -14,7 +14,7 @@ const Reddit = {
     async searchReddit(searchTerm) {
     try {
     const state = store.getState();
-    const data = await fetch(`https://www.reddit.com/${state.subReddit}/search.json?q=${searchTerm}&restrict_sr=on`);  
+    const data = await fetch(`https://www.reddit.com/${state.subReddit}search.json?q=${searchTerm}&restrict_sr=on`);  
     const jsonData = data.json();
     console.log(state.subReddit)
     return jsonData;

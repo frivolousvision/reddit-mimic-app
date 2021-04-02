@@ -17,20 +17,23 @@ export const Header =()=> {
     useEffect(()=> {
         Reddit.populateReddit()
         .then( data => setResults(data));
+        window.scrollTo(0, 0);
     }, [subState])
     
     const handleSubChange =(e)=> {
-        dispatch(chooseSub(e.currentTarget.dataset.sub))
+        dispatch(chooseSub(e.currentTarget.dataset.sub));
+        window.scrollTo(0, 0);
     }
 
     const handleSearchTerm =(e)=> {
-        setSearchTerm(e.target.value)
+        setSearchTerm(e.target.value);
     }
     
     const handleSubmit =()=> {
         Reddit.searchReddit(searchTerm)
         .then(data => setResults(data));
         setSearchTerm('');
+        window.scrollTo(0, 0);
     }
     const handleDisplay =()=> {
         if(!display) {
@@ -40,13 +43,20 @@ export const Header =()=> {
             setDisplay(false)
         }
     }
-
+    const keyPressed =(e)=> {
+        if (e.key === "Enter") {
+          handleSubmit();
+        }
+      }
+      const goHome = ()=>{
+        window.location.reload();
+     }
     return (
         <div>
             <div className="header">
-                <div className="logo clickable" onClick={handleSubChange} data-sub="">
+                <div className="logo clickable" onClick={goHome} data-sub="">
                     <img src={redditLogo} alt="" className="reddit-logo"/>
-                    <h1>reddit mimic</h1>
+                    <h1 className="reddit-logo-typed">reddit preview</h1>
                 </div>
 
                 <div className="input-box">
@@ -55,6 +65,7 @@ export const Header =()=> {
                         placeholder="search"
                         value={searchTerm}
                         onChange={handleSearchTerm}
+                        onKeyPress={keyPressed}
                     />
 
                     <input
@@ -65,7 +76,7 @@ export const Header =()=> {
                 </div>
                 <h4 onClick={handleDisplay} className="sub-menu-link">r/subs</h4>
             </div>
-            <SubMenu display={display} handleSubChange={handleSubChange}/>
+            <SubMenu display={display} handleSubChange={handleSubChange} handleDisplay={handleDisplay}/>
             <Search results={results} className="search"/>
         </div>
     )
