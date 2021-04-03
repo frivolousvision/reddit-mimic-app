@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import Reddit from '../../Utilities/Reddit';
 import redditLogo from "./reddit-logo.png";
+import searchIcon from "./search-icon.png";
 import {chooseSub, selectSubReddit} from "../../Features/subRedditSlice";
 
 export const Header =()=> {
@@ -67,11 +68,9 @@ export const Header =()=> {
                         onChange={handleSearchTerm}
                         onKeyPress={keyPressed}
                     />
-
-                    <input
-                        type="submit"
-                        value="search"
-                        onClick={handleSubmit}
+                    <img src={searchIcon}
+                    onClick={handleSubmit}
+                    className="search-icon"
                     />
                 </div>
                 <h4 onClick={handleDisplay} className="sub-menu-link">r/subs</h4>

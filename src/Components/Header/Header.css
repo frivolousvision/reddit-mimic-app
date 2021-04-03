@@ -24,10 +24,19 @@
     margin-right: .75rem;
 }
 input {
-    border: 0.1px solid rgb(238, 238, 238);
+    border: 1px solid rgb(161, 161, 161);
     border-radius: 5px;
     height: 1.5rem;
     width: 20vw;
+}
+.input-box {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+.search-icon {
+    max-height: 1rem;
+    cursor: pointer;
 }
 .reddit-logo:hover {
     border-radius: 100%;

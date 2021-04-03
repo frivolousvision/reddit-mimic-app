@@ -48,7 +48,7 @@ a {
 }
 .author {
     font-size: .7rem;
-    opacity: 60%;
+    color: gray;
     margin-top: 1.2rem;
 }
 .post-title {
@@ -64,14 +64,30 @@ a {
 }
 
 .comments {
-    position: absolute;
-    margin-top: -10px;
     padding-left: .8rem;
+}
+.percent-upvote {
+    padding-right: 1.7rem;
+}
+.comments-and-percent {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
     font-size: .7rem;
-    opacity: 60%;
+    color: gray;
 }
 @media screen and (max-width: 1100px) {
     .results {
         width: 98%;
+    }
+    .post-heading {
+        display:block;
+        margin-bottom: .2rem;
+    }
+    .author {
+        padding-left: .8rem;
+    }
+    .post-heading p {
+        line-height: 0rem;
     }
 }
