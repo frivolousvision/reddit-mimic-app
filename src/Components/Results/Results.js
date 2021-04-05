@@ -59,13 +59,13 @@ export const Results =(props)=> {
          upVotes = (props.searchResults.data.ups - props.searchResults.data.downs)
     }
     const toggleComments =(e)=> {
-        if(!props.comments) {
+        //if(!props.comments) {
         props.toggleShowComments();
         props.getComments(e);
-        }
-        else {
-            props.toggleShowComments();
-        }
+        //}
+        //else {
+        //props.toggleShowComments();
+        //}
     }
     
     
