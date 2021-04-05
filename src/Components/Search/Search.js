@@ -13,7 +13,12 @@ export const Search =(props)=> {
                     <img src={empty} alt="" className="empty-image"/> :
                 props.results.data ? props.results.data.children.map((child, index) => {
                     return (
-                        <Results searchResults={child} key={index} handleSubChange={props.handleSubChange}/>
+                        <Results searchResults={child} key={index} 
+                        handleSubChange={props.handleSubChange} 
+                        getComments={props.getComments} 
+                        comments={props.comments}
+                        showComments={props.showComments} 
+                        toggleShowComments={props.toggleShowComments}/>
                     )
                 }) :
                 <img src={empty} alt="" className="empty-image"/>

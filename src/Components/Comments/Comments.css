@@ -1,0 +1,24 @@
+.comments {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+.comments-header {
+    display: inline-flex;
+    align-items: baseline;
+}
+.comment-posted {
+    margin-left: 1rem;
+    color: gray;
+    font-size: .7rem;
+}
+.comment-author {
+    color: black;
+    font-size: 1rem;
+}
+.comment-body {
+    margin-top: -.2rem;
+}
+.comment-votes {
+    font-size: .6rem;
+    font-weight: 800;
+}

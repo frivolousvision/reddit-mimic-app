@@ -1,6 +1,7 @@
 import './Results.css'
 import redditLogo from './reddit-logo.png';
-import {TimeSincePosted} from '../../Utilities/TimeSincePosted';
+import {Comments} from '../Comments/Comments';
+//import {TimeSincePosted} from '../../Utilities/TimeSincePosted';
 //import { arrowAltUp } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -57,6 +58,17 @@ export const Results =(props)=> {
     } else{
          upVotes = (props.searchResults.data.ups - props.searchResults.data.downs)
     }
+    const toggleComments =(e)=> {
+        if(!props.comments) {
+        props.toggleShowComments();
+        props.getComments(e);
+        }
+        else {
+            props.toggleShowComments();
+        }
+    }
+    
+    
 
     return(
         <div className="results">
@@ -82,9 +94,18 @@ export const Results =(props)=> {
                     <embed type="video/webm"  src={props.searchResults.data.secure_media.reddit_video.scrubber_media_url} /> : 
                     <a href={props.searchResults.data.url}><img src={props.searchResults.data.url} alt=""/></a> }
                     <div className="comments-and-percent">
-                    <p className="comments">Comments {props.searchResults.data.num_comments}</p>
+                    
+                    <p className="comments" data-link={props.searchResults.data.permalink} 
+                    onClick={toggleComments}>Comments {props.searchResults.data.num_comments}</p>
                     <p className="percent-upvote">{props.searchResults.data.upvote_ratio * 100}% Upvoted</p>
                     </div>
+                    {!props.showComments ? "" :  
+                    !props.comments ? "" :  
+                    props.comments[1].data.children.map((child, index)=> {
+                      return ( <Comments comment={child} key={index}/>
+                      )
+                    })}
+                    
                 </div>
             </div> 
         </div>

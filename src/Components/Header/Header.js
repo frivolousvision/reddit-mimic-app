@@ -13,6 +13,8 @@ export const Header =()=> {
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState(null);
     const [display, setDisplay] = useState(false);
+    const [comments, setComments] = useState(null);
+    const [showComments, setShowComments] = useState(false);
     const subState = useSelector(selectSubReddit);
 
     useEffect(()=> {
@@ -21,6 +23,11 @@ export const Header =()=> {
         window.scrollTo(0, 0);
     }, [subState])
     
+    const getComments =(e)=> {
+    Reddit.findComments(e.currentTarget.dataset.link)
+    .then(data => setComments(data));
+    }
+
     const handleSubChange =(e)=> {
         dispatch(chooseSub(e.currentTarget.dataset.sub));
         window.scrollTo(0, 0);
@@ -42,6 +49,14 @@ export const Header =()=> {
         }
         else {
             setDisplay(false)
+        }
+    }
+    const toggleShowComments =()=> {
+        if(!showComments) {
+            setShowComments(true);
+        }
+        else {
+            setShowComments(false)
         }
     }
     const keyPressed =(e)=> {
@@ -71,13 +86,17 @@ export const Header =()=> {
                     <img src={searchIcon}
                     onClick={handleSubmit}
                     className="search-icon"
+                    alt=''
                     />
                 </div>
                 <h4 onClick={handleDisplay} className="sub-menu-link">r/subs</h4>
                 <h4 onClick={handleDisplay} className="mobile-sub-menu-link">r/</h4>
             </div>
             <SubMenu display={display} handleSubChange={handleSubChange} handleDisplay={handleDisplay}/>
-            <Search results={results} handleSubChange={handleSubChange} className="search"/>
+            <Search results={results} handleSubChange={handleSubChange} 
+            getComments={getComments} comments={comments} 
+            showComments={showComments} toggleShowComments={toggleShowComments}
+            className="search"/>
         </div>
     )
 }
