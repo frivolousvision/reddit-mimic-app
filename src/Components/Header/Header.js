@@ -13,36 +13,31 @@ export const Header =()=> {
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState(null);
     const [display, setDisplay] = useState(false);
-    const [comments, setComments] = useState(null);
-    const [showComments, setShowComments] = useState(false);
     const subState = useSelector(selectSubReddit);
 
+    //Loads content on page load
     useEffect(()=> {
         Reddit.populateReddit()
         .then( data => setResults(data));
         window.scrollTo(0, 0);
     }, [subState])
-    
-    const getComments =(e)=> {
-    Reddit.findComments(e.currentTarget.dataset.link)
-    .then(data => setComments(data));
-    }
-
+    //Loads subReddit from dropdown menu
     const handleSubChange =(e)=> {
         dispatch(chooseSub(e.currentTarget.dataset.sub));
         window.scrollTo(0, 0);
     }
-
+    //Gets value from search term
     const handleSearchTerm =(e)=> {
         setSearchTerm(e.target.value);
     }
-    
+    //Search all of Reddit or within subReddit
     const handleSubmit =()=> {
         Reddit.searchReddit(searchTerm)
         .then(data => setResults(data));
         setSearchTerm('');
         window.scrollTo(0, 0);
     }
+    //Toggles subReddit Menu displaying
     const handleDisplay =()=> {
         if(!display) {
             setDisplay(true);
@@ -51,22 +46,16 @@ export const Header =()=> {
             setDisplay(false)
         }
     }
-    const toggleShowComments =()=> {
-        if(!showComments) {
-            setShowComments(true);
-        }
-        else {
-            setShowComments(false)
-        }
-    }
+    //Allows search submit via enter key
     const keyPressed =(e)=> {
         if (e.key === "Enter") {
           handleSubmit();
         }
       }
-      const goHome = ()=>{
+      const goHome =()=> {
         window.location.reload();
      }
+
     return (
         <div>
             <div className="header">
@@ -84,18 +73,16 @@ export const Header =()=> {
                         onKeyPress={keyPressed}
                     />
                     <img src={searchIcon}
-                    onClick={handleSubmit}
-                    className="search-icon"
-                    alt=''
+                        onClick={handleSubmit}
+                        className="search-icon"
+                        alt=''
                     />
                 </div>
                 <h4 onClick={handleDisplay} className="sub-menu-link">r/subs</h4>
                 <h4 onClick={handleDisplay} className="mobile-sub-menu-link">r/</h4>
             </div>
             <SubMenu display={display} handleSubChange={handleSubChange} handleDisplay={handleDisplay}/>
-            <Search results={results} handleSubChange={handleSubChange} 
-            getComments={getComments} comments={comments} 
-            showComments={showComments} toggleShowComments={toggleShowComments}
+            <Search results={results} handleSubChange={handleSubChange}  
             className="search"/>
         </div>
     )

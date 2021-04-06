@@ -12,40 +12,43 @@ export const SubMenu =(props)=> {
         <div>
             <div className={props.display ? "show-menu" : "hide-menu"}>
                 <div className="sub-link-box">
-                <span onClick={clickEvent} 
+                    <span onClick={clickEvent} 
                     className="sub-link"
                     data-sub="r/art/"
                     >r/Art</span>
                 </div>
                 <div className="sub-link-box">
-                <span onClick={clickEvent} 
+                    <span onClick={clickEvent} 
                     className="sub-link"
                     data-sub="r/askreddit/"
                     >r/AskReddit</span>
                 </div>
                 <div className="sub-link-box">
-                <span onClick={clickEvent} 
+                    <span onClick={clickEvent} 
                     className="sub-link"
                     data-sub="r/atlanta/"
                     >r/Atlanta</span>
                 </div>
                 <div className="sub-link-box">
-                <span onClick={clickEvent} 
+                    <span onClick={clickEvent} 
                     className="sub-link"
                     data-sub="r/awww/"
                     >r/awww</span>
                 </div>
                 <div className="sub-link-box">
-                <span onClick={clickEvent} 
+                    <span onClick={clickEvent} 
                     className="sub-link"
                     data-sub="r/creepy/"
                     >r/creepy</span>
                 </div>
                 <div className="sub-link-box">
-                <span onClick={clickEvent} 
-                    className="sub-link"
-                    data-sub="r/dataisbeautiful/"
-                    >r/dataisbeautiful</span>
+                    <span 
+                        onClick={clickEvent} 
+                        className="sub-link"
+                        data-sub="r/dataisbeautiful/"
+                    >
+                        r/dataisbeautiful
+                    </span>
                 </div>
                 <div className="sub-link-box">
                 <span onClick={clickEvent} 
