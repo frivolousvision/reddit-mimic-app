@@ -80,7 +80,7 @@ export const Header =()=> {
                     />
                 </div>
                 <h4 onClick={handleDisplay} className="sub-menu-link">r/explore</h4>
-                <img onClick={handleDisplay} className="mobile-sub-menu-link" src={hamburger}/>
+                <img onClick={handleDisplay} className="mobile-sub-menu-link" src={hamburger} alt=""/>
             </div>
             <SubMenu display={display} handleSubChange={handleSubChange} handleDisplay={handleDisplay}/>
             <Search results={results} handleSubChange={handleSubChange}  
