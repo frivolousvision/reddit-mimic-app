@@ -64,8 +64,8 @@ export const Results =(props)=> {
                 
                     <div className="post-heading">
                         {!about ? null : 
-                        about.data.icon_img ? <img className="sub-icon" src={about.data.icon_img} alt=""/>
-                        : <img className="sub-icon" src={blackBox} alt=""/>}
+                        about.data.icon_img ? <img className="sub-icon" src={about.data.icon_img} alt=""/> :
+                        <img className="sub-icon" src={blackBox} alt=""/>}
                         <strong><p className="sub-name" onClick={props.handleSubChange} 
                         data-sub={`${props.searchResults.data.subreddit_name_prefixed}/`}>
                         {props.searchResults.data.subreddit_name_prefixed}</p></strong>

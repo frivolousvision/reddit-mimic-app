@@ -111,6 +111,7 @@ a {
         border-left: none;
         box-shadow: none;
     }
+    
     .mobile-votes {
         display: block;
         padding-left: 1.7rem;
@@ -136,13 +137,18 @@ a {
 }
 @media screen and (max-width: 480px) {
     .results img {
-        width: 100%;
-        border-radius: none;
+        border-radius: 0px;
         box-shadow: none;
+        margin-left: 0;
+        margin-right: 0;
     }
     .results {
-        border-radius: none;
+        border-radius: 0px;
         box-shadow: none;
+    }
+    .results:hover{
+        box-shadow: none;
+        border-left: none;
     }
     .post-heading {
         margin-top: -1rem;
@@ -153,5 +159,10 @@ a {
     }
     .sub-icon {
         margin-top: 1rem;
+    }
+    .media-box {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
     }
 }
