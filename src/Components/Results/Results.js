@@ -1,5 +1,6 @@
 import './Results.css'
 import redditLogo from './reddit-logo.png';
+import blackBox from './black-box.png';
 import {Comments} from '../Comments/Comments';
 import {useEffect, useState} from 'react';
 import Reddit from '../../Utilities/Reddit';
@@ -9,6 +10,7 @@ export const Results =(props)=> {
     const [comments, setComments] = useState(null);
     const [showComments, setShowComments]  = useState(false);
     const [showReadMore, setShowReadMore] = useState(false);
+    const [about, setAbout] = useState(null);
 
     const created = props.searchResults.data.created_utc;
     const now = new Date();
@@ -44,7 +46,13 @@ export const Results =(props)=> {
     useEffect(()=> {
         Reddit.findComments(props.searchResults.data.permalink)
         .then(data => setComments(data))
-    }, [props.permalink])
+    }, [props.searchResults])
+    
+    useEffect(()=> {
+        fetch(`https://www.reddit.com/${props.searchResults.data.subreddit_name_prefixed}/about.json`)
+        .then(data => data.json())
+        .then(jsonData => setAbout(jsonData));
+    },[props.searchResults])
 
 
     return(
@@ -55,11 +63,15 @@ export const Results =(props)=> {
                     <p className="votes">{upVotes}k</p>
                 
                     <div className="post-heading">
+                        {!about ? null : 
+                        about.data.icon_img ? <img className="sub-icon" src={about.data.icon_img} />
+                        : <img className="sub-icon" src={blackBox}/>}
                         <strong><p className="sub-name" onClick={props.handleSubChange} 
                         data-sub={`${props.searchResults.data.subreddit_name_prefixed}/`}>
                         {props.searchResults.data.subreddit_name_prefixed}</p></strong>
+    
                         <p className="author">posted by u/{props.searchResults.data.author} {posted} {units} ago</p>
-                    </div>
+                        </div>
                 
                     <a href={props.searchResults.data.url} target="_blank" rel="noreferrer">
                     <p className="post-title">{props.searchResults.data.title}</p></a>

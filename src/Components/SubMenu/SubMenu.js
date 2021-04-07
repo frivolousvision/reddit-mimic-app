@@ -53,12 +53,6 @@ export const SubMenu =(props)=> {
                 <div className="sub-link-box">
                 <span onClick={clickEvent} 
                     className="sub-link"
-                    data-sub="r/dogs/"
-                    >r/dogs</span>
-                </div>
-                <div className="sub-link-box">
-                <span onClick={clickEvent} 
-                    className="sub-link"
                     data-sub="r/earthporn/"
                     >r/EarthPorn</span>
                 </div>
@@ -79,6 +73,12 @@ export const SubMenu =(props)=> {
                     className="sub-link"
                     data-sub="r/futurology/"
                     >r/futurology</span>
+                </div>
+                <div className="sub-link-box">
+                <span onClick={clickEvent} 
+                    className="sub-link"
+                    data-sub="r/imsorryjon/"
+                    >r/imsorryjon</span>
                 </div>
                 <div className="sub-link-box">
                 <span onClick={clickEvent} 
