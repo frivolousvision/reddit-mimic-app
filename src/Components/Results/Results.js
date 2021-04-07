@@ -8,6 +8,7 @@ import Time from '../../Utilities/TimeFormatting';
 export const Results =(props)=> {
     const [comments, setComments] = useState(null);
     const [showComments, setShowComments]  = useState(false);
+    const [showReadMore, setShowReadMore] = useState(false);
 
     const created = props.searchResults.data.created_utc;
     const now = new Date();
@@ -30,6 +31,14 @@ export const Results =(props)=> {
         }
         else {
         setShowComments(false)
+        }}
+
+    const readMore =()=> {
+        if(!showReadMore) {
+        setShowReadMore(true);
+        }
+        else {
+        setShowReadMore(false)
         }}
 
     useEffect(()=> {
@@ -57,12 +66,18 @@ export const Results =(props)=> {
                 </div>
                 
                 <div className="media-box">
+                    {!props.searchResults.data.selftext ? null : 
+                    <p onClick={readMore} className="read-more">Read More</p>}
+                    {!props.searchResults.data.selftext ? null : 
+                    <p className={showReadMore ? "show-selftext" : "hide-selftext"}>{props.searchResults.data.selftext}</p>}
+
                     {!props.searchResults.data ? <img className="loading" src={redditLogo} alt=""/> :
                     props.searchResults.data.is_video === true ?
                     <embed type="video/webm"  src={props.searchResults.data.secure_media.reddit_video.scrubber_media_url} /> : 
                     <a href={props.searchResults.data.url}><img src={props.searchResults.data.url} alt=""/></a> }
                     
                     <div className="comments-and-percent">
+                    <p className="mobile-votes">{upVotes}k</p>
                         <p className="comments" data-link={props.searchResults.data.permalink} 
                         onClick={toggleComments}>Comments {props.searchResults.data.num_comments}</p>
                         <p className="percent-upvote">{props.searchResults.data.upvote_ratio * 100}% Upvoted</p>

@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import Reddit from '../../Utilities/Reddit';
 import redditLogo from "./reddit-logo.png";
 import searchIcon from "./search-icon.png";
+import hamburger from './hamburger-clear.png';
 import {chooseSub, selectSubReddit} from "../../Features/subRedditSlice";
 
 export const Header =()=> {
@@ -61,7 +62,7 @@ export const Header =()=> {
             <div className="header">
                 <div className="logo clickable" onClick={goHome} data-sub="">
                     <img src={redditLogo} alt="" className="reddit-logo"/>
-                    <h1 className="reddit-logo-typed">reddit preview</h1>
+                    <h1 className="reddit-logo-typed">reddit dark</h1>
                 </div>
 
                 <div className="input-box">
@@ -78,8 +79,8 @@ export const Header =()=> {
                         alt=''
                     />
                 </div>
-                <h4 onClick={handleDisplay} className="sub-menu-link">r/subs</h4>
-                <h4 onClick={handleDisplay} className="mobile-sub-menu-link">r/</h4>
+                <h4 onClick={handleDisplay} className="sub-menu-link">r/explore</h4>
+                <img onClick={handleDisplay} className="mobile-sub-menu-link" src={hamburger}/>
             </div>
             <SubMenu display={display} handleSubChange={handleSubChange} handleDisplay={handleDisplay}/>
             <Search results={results} handleSubChange={handleSubChange}  

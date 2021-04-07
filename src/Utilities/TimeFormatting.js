@@ -20,13 +20,13 @@ const Time = {
         }
     },
     unitFormatting: function(sincePosted, units){
-        if(sincePosted <= 59) {
+        if(sincePosted <= 1) {
             return units = "minute"}
-        if(sincePosted > 59 && sincePosted <= 119) {
+        if(sincePosted >= 2 && sincePosted <= 59) {
             return units = "minutes"}
-        if(sincePosted > 119 && sincePosted <= 239) {
+        if(sincePosted >= 60 && sincePosted <= 119) {
             return units = "hour"}
-        if(sincePosted > 239 && sincePosted <= 1439) {
+        if(sincePosted >= 120 && sincePosted <= 1439) {
             return units = "hours"}
         if(sincePosted > 1439 && sincePosted <= 2879) {
             return units = "day"}
