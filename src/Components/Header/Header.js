@@ -27,6 +27,11 @@ export const Header =()=> {
         dispatch(chooseSub(e.currentTarget.dataset.sub));
         window.scrollTo(0, 0);
     }
+    //Delete this if it don't work
+    const searchSubChange =(term)=> {
+        dispatch(chooseSub(term));
+        window.scrollTo(0, 0);
+    }
     //Gets value from search term
     const handleSearchTerm =(e)=> {
         setSearchTerm(e.target.value);
@@ -82,7 +87,8 @@ export const Header =()=> {
                 <h4 onClick={handleDisplay} className="sub-menu-link">r/explore</h4>
                 <img onClick={handleDisplay} className="mobile-sub-menu-link" src={hamburger} alt=""/>
             </div>
-            <SubMenu display={display} handleSubChange={handleSubChange} handleDisplay={handleDisplay}/>
+            <SubMenu display={display} handleSubChange={handleSubChange} searchSubChange={searchSubChange}
+            handleDisplay={handleDisplay}/>
             <Search results={results} handleSubChange={handleSubChange}  
             className="search"/>
         </div>

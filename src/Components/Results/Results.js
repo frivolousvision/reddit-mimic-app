@@ -85,7 +85,8 @@ export const Results =(props)=> {
 
                     {!props.searchResults.data ? <img className="loading" src={redditLogo} alt=""/> :
                     props.searchResults.data.is_video === true ?
-                    <embed type="video/webm"  src={props.searchResults.data.secure_media.reddit_video.scrubber_media_url} /> : 
+                    <video controls src={props.searchResults.data.secure_media.reddit_video.fallback_url
+                    } /> : 
                     <a href={props.searchResults.data.url}><img src={props.searchResults.data.url} alt=""/></a> }
                     
                     <div className="comments-and-percent">

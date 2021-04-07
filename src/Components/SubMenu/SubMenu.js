@@ -1,16 +1,35 @@
+import { useState } from "react";
+import Reddit from '../../Utilities/Reddit';
 import "./SubMenu.css";
 
 export const SubMenu =(props)=> {
-    
+   // const [subSearch, setSubSearch] = useState('')
+   //
+   // const handleSubSearch =(e)=> {
+   //     setSubSearch(e.target.value)
+   // }
     const clickEvent =(e)=> {
         props.handleDisplay();
         props.handleSubChange(e);
-        
     }
+    //const keyPressed =(e)=> {
+    //    if (e.key === "Enter") {
+    //      props.searchSubChange(subSearch);
+    //    }
+    //  }
     
+
     return (
         <div>
             <div className={props.display ? "show-menu" : "hide-menu"}>
+               {/*/* <input type="text"
+                        placeholder="r/search"
+                        value={subSearch}
+                        onChange={handleSubSearch}
+                        onKeyPress={keyPressed}
+    >
+                    
+                </input>*/}
                 <div className="sub-link-box">
                     <span onClick={clickEvent} 
                     className="sub-link"
