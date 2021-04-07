@@ -139,8 +139,10 @@ a {
     .results img {
         border-radius: 0px;
         box-shadow: none;
-        margin-left: 0;
-        margin-right: 0;
+        border: 1px solid red;
+    }
+    .media-box {
+        padding: 0;
     }
     .results {
         border-radius: 0px;
