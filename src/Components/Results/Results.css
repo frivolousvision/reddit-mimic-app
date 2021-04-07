@@ -60,7 +60,7 @@ a {
 }
 .post-title {
     padding-right: 1rem;
-    padding-left: .8rem;
+    
 }
 .votes {
     position: absolute;
@@ -139,7 +139,6 @@ a {
     .results img {
         border-radius: 0px;
         box-shadow: none;
-        border: 1px solid red;
     }
     .media-box {
         padding: 0;
