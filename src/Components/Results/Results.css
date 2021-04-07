@@ -32,7 +32,6 @@
 .results-box embed {
     max-width: 100%;
     max-height: 50vh;
-    box-shadow: 2px 1px 1px rgb(180, 179, 179);
 }
 a {
     text-decoration: none;
@@ -110,6 +109,7 @@ a {
     .results {
         width: 100%;
         border-left: none;
+        box-shadow: none;
     }
     .mobile-votes {
         display: block;
@@ -137,6 +137,12 @@ a {
 @media screen and (max-width: 480px) {
     .results img {
         width: 100%;
+        border-radius: none;
+        box-shadow: none;
+    }
+    .results {
+        border-radius: none;
+        box-shadow: none;
     }
     .post-heading {
         margin-top: -1rem;

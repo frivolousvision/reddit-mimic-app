@@ -35,6 +35,7 @@ input {
     border-radius: 5px;
     height: 1.5rem;
     width: 20vw;
+    background-color:rgb(215,215,215);
 }
 .input-box {
     display: inline-flex;
