@@ -29,6 +29,11 @@
     max-height: 70vh;
     margin-bottom: 1.5rem;
 }
+.media-box video {
+    max-width: 100%;
+    max-height: 70vh;
+    margin-bottom: 1.5rem;
+}
 .results-box embed {
     max-width: 100%;
     max-height: 50vh;
