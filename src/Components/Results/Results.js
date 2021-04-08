@@ -85,8 +85,11 @@ export const Results =(props)=> {
 
                     {!props.searchResults.data ? <img className="loading" src={redditLogo} alt=""/> :
                     props.searchResults.data.is_video === true ?
-                    <video controls src={props.searchResults.data.secure_media.reddit_video.fallback_url
-                    } /> : 
+                        <video controls>
+                        <source src={props.searchResults.data.secure_media.reddit_video.fallback_url} type="video/mp4"/>
+                        </video> : 
+                    props.searchResults.data.secure_media_embed ? 
+                    <embed className="gifs" src={props.searchResults.data.secure_media_embed.media_domain_url} alt=""/> :
                     <a href={props.searchResults.data.url}><img src={props.searchResults.data.url} alt=""/></a> }
                     
                     <div className="comments-and-percent">
