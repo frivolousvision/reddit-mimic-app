@@ -9,7 +9,8 @@ import searchIcon from "./search-icon.png";
 import hamburger from './hamburger-clear.png';
 import {chooseSub, selectSubReddit} from "../../Features/subRedditSlice";
 import {selectFirstChildren, setFirstChildren, setNextChildren} from "../../Features/childrenSlice";
-import InfiniteScroll from 'react-infinite-scroll-component';
+//import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from 'react-infinite-scroller';
 
 
 
@@ -34,17 +35,15 @@ export const Header =()=> {
     //}, [subState, dispatch])
     useEffect(()=> {
         async function populateReddit() {
-        //const state = store.getState();
         const data = await fetch(`https://www.reddit.com/${subState}.json`);
         const jsonData = await data.json();
         const childVar = await jsonData.data.children
         setResults(jsonData)
         dispatch(setFirstChildren(childVar))
-        //setChildrenArray(childVar)
         setNextAfter(jsonData.data.after)
-        //window.scrollTo(0, 0);
     }
     populateReddit();
+    
     }, [subState, dispatch])
 
     //Loads subReddit from dropdown menu
@@ -90,7 +89,7 @@ export const Header =()=> {
     //Loads next content for infinte scroll 
     let nextJson;
      const loadMore = async () => {
-        if(results.data) {
+        if(results && results.data) {
         nextJson = await Reddit.loadMore(nextAfter);
         const nextJsonArray = await nextJson.data.children;
         const afterVar = await nextJson.data.after
@@ -127,7 +126,7 @@ export const Header =()=> {
             </div>
             <SubMenu display={display} handleSubChange={handleSubChange} searchSubChange={searchSubChange}
             handleDisplay={handleDisplay}/>
-           <InfiniteScroll
+                {/*<InfiniteScroll
                 dataLength={!results ? null :
                             !results.data ? null : 
                             childrenArray.length} 
@@ -142,6 +141,17 @@ export const Header =()=> {
                     
         
                     <Search results={results} children={childrenArray} handleSubChange={handleSubChange}  loadMore={loadMore}
+                    className="search"/>
+                </InfiniteScroll>*/}
+            <InfiniteScroll
+                pageStart={0}
+                loadMore={loadMore}
+                hasMore={true}
+                loader={<img className="loader" key={0} src={redditLogo} alt=""/>}
+                threshold={2000}
+                initialLoad={false}
+>
+            <Search results={results} children={childrenArray} handleSubCha nge={handleSubChange}  loadMore={loadMore}
                     className="search"/>
             </InfiniteScroll>
         </div>
