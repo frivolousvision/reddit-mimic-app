@@ -12,26 +12,41 @@ import {selectFirstChildren, setFirstChildren, setNextChildren} from "../../Feat
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
+
 export const Header =()=> {
     const dispatch = useDispatch();
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState(null);
     const [display, setDisplay] = useState(false);
     const [nextAfter, setNextAfter] = useState('');
-    //const [childrenArray, setChildrenArray] = useState([]);
     const subState = useSelector(selectSubReddit);
     const childrenArray = useSelector(selectFirstChildren);
 
     //Loads content on page load
-    useEffect(async ()=> {
-        const json = await Reddit.populateReddit()
-        const childVar = await json.data.children
-        setResults(json)
+    //useEffect(async ()=> {
+    //    const json = await Reddit.populateReddit()
+    //    const childVar = await json.data.children
+    //    setResults(json)
+    //    dispatch(setFirstChildren(childVar))
+    //    //setChildrenArray(childVar)
+    //    setNextAfter(json.data.after)
+    //    //window.scrollTo(0, 0);
+    //}, [subState, dispatch])
+    useEffect(()=> {
+        async function populateReddit() {
+        //const state = store.getState();
+        const data = await fetch(`https://www.reddit.com/${subState}.json`);
+        const jsonData = await data.json();
+        const childVar = await jsonData.data.children
+        setResults(jsonData)
         dispatch(setFirstChildren(childVar))
         //setChildrenArray(childVar)
-        setNextAfter(json.data.after)
+        setNextAfter(jsonData.data.after)
         //window.scrollTo(0, 0);
-    }, [subState])
+    }
+    populateReddit();
+    }, [subState, dispatch])
+
     //Loads subReddit from dropdown menu
     const handleSubChange =(e)=> {
         dispatch(chooseSub(e.currentTarget.dataset.sub));
@@ -83,7 +98,7 @@ export const Header =()=> {
         dispatch(setNextChildren(nextJsonArray));
         }}
     
-            
+    
     
     return (
         <div>
