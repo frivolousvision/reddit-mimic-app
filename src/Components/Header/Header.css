@@ -63,6 +63,7 @@ input {
 .loader {
     max-width: 100%;
     max-height: 100px;
+    margin-top: 10rem;
 }
 @media (prefers-reduced-motion: no-preference) {
     .loader {
@@ -100,5 +101,10 @@ input {
     }
     input, select, textarea {
         font-size: 16px;
+    }
+    .loader {
+        max-width: 100%;
+        max-height: 75px;
+        margin-top: 3rem;
     }
   }
