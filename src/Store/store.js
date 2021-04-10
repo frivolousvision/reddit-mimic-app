@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import subRedditReducer from "../Features/subRedditSlice";
+import childrenReducer from "../Features/childrenSlice";
 
 const store = configureStore({
     reducer: {
-        subReddit: subRedditReducer 
+        subReddit: subRedditReducer, 
+        children: childrenReducer
     }
 })
 

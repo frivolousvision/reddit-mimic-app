@@ -2,16 +2,18 @@ import {Results} from '../Results/Results';
 import redditLogo from './reddit-logo.png';
 import empty from './wow-empty.png';
 import './Search.css';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Reddit from '../../Utilities/Reddit';
 
-
+// const newArrayOfObjects = [ {} ]
 export const Search =(props)=> {
 
     return (
         <div className="searchResults">
                 {!props.results ? <img className="loading" src={redditLogo} alt=""/> :
-                    !props.results.data.after ?
+                    !props.results.data ?
                     <img src={empty} alt="" className="empty-image"/> :
-                props.results.data ? props.results.data.children.map((child, index) => {
+                props.results.data ? props.children.map((child, index) => {
                     return (
                         <Results searchResults={child} key={index}
                         id={index} 
@@ -28,6 +30,6 @@ export const Search =(props)=> {
                 }
                 
         </div>
-
+        
     )
 }

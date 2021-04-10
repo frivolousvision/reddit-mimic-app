@@ -6,6 +6,7 @@ import {useEffect, useState} from 'react';
 import Reddit from '../../Utilities/Reddit';
 import Time from '../../Utilities/TimeFormatting';
 
+
 export const Results =(props)=> {
     const [comments, setComments] = useState(null);
     const [showComments, setShowComments]  = useState(false);
@@ -47,6 +48,10 @@ export const Results =(props)=> {
         Reddit.findComments(props.searchResults.data.permalink)
         .then(data => setComments(data))
     }, [props.searchResults])
+    
+//    useEffect(()=> {
+//        Reddit.loadMore(props.searchResults.data.after)
+//    },[props.searchResults])
     
     useEffect(()=> {
         fetch(`https://www.reddit.com/${props.searchResults.data.subreddit_name_prefixed}/about.json`)

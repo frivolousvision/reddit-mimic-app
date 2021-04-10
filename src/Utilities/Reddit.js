@@ -8,6 +8,12 @@ const Reddit = {
         const jsonData = await data.json();
         return jsonData;
     },
+    async loadMore(id) {
+        const state = store.getState();
+        const data = await fetch(`https://www.reddit.com/${state.subReddit}.json?after=${id}`);
+        const jsonData = await data.json();
+        return jsonData;
+    },
     async subRedditInfo() {
         const state = store.getState();
         if(state.subReddit.length > 0) {
