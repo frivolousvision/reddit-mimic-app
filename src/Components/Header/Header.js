@@ -151,7 +151,7 @@ export const Header =()=> {
                 threshold={2000}
                 initialLoad={false}
 >
-            <Search results={results} children={childrenArray} handleSubCha nge={handleSubChange}  loadMore={loadMore}
+            <Search results={results} children={childrenArray} handleSubChange={handleSubChange}  loadMore={loadMore}
                     className="search"/>
             </InfiniteScroll>
         </div>
