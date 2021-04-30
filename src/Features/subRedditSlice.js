@@ -13,4 +13,4 @@ export const subRedditOptions = {
 export const subRedditSlice = createSlice(subRedditOptions);
 export const selectSubReddit = (state) => state.subReddit;
 export const {chooseSub} = subRedditSlice.actions;
-export default subRedditSlice.reducer;
+export default subRedditSlice.reducer;  

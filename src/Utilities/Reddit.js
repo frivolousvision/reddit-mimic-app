@@ -8,11 +8,17 @@ const Reddit = {
     //    const jsonData = await data.json();
     //    return jsonData;
     //},
-    async loadMore(id) {
+    async loadMore(id, searchTerm) {
         const state = store.getState();
-        const data = await fetch(`https://www.reddit.com/${state.subReddit}.json?after=${id}`);
+        if(!state.search){
+        const data = await fetch(`https://www.reddit.com/${state.subReddit}.json?$after=${id}`);
         const jsonData = await data.json();
-        return jsonData;
+        return jsonData}
+        if(state.search){
+            const data = await fetch(`https://www.reddit.com/${state.subReddit}.json?q=${state.search}&restrict_sr=on&$after=${id}`);
+            const jsonData = await data.json();
+            return jsonData  
+        }
     },
     async subRedditInfo() {
         const state = store.getState();

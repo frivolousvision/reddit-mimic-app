@@ -18,4 +18,4 @@ export const childrenOptions = {
 export const childrenSlice = createSlice(childrenOptions);
 export const selectFirstChildren = (state) => state.children;
 export const {setFirstChildren, setNextChildren} = childrenSlice.actions;
-export default childrenSlice.reducer;
+export default childrenSlice.reducer;  

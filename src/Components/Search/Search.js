@@ -7,10 +7,11 @@ export const Search =(props)=> {
 
     return (
         <div className="searchResults">
-                {!props.results ? null :
-                    !props.results.data ?
+                {!props.children ? //null :
+                    //!props.results.data ?
                     <img src={empty} alt="" className="empty-image"/> :
-                props.results.data ? props.children.map((child, index) => {
+                //props.results.data ? 
+                props.children.map((child, index) => {
                     return (
                         <Results searchResults={child} key={index}
                         id={index} 
@@ -22,11 +23,12 @@ export const Search =(props)=> {
                         clearComments={props.clearComments}
                         />
                     )
-                }) :
-                <img src={empty} alt="" className="empty-image"/>
+                }) 
+                //:
+                //<img src={empty} alt="" className="empty-image"/>
                 }
                 
         </div>
         
-    )
+    )  
 }
