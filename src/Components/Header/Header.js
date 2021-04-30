@@ -9,7 +9,6 @@ import searchIcon from "./search-icon.png";
 import hamburger from './hamburger-clear.png';
 import {chooseSub, selectSubReddit} from "../../Features/subRedditSlice";
 import {selectFirstChildren, setFirstChildren, setNextChildren} from "../../Features/childrenSlice";
-//import InfiniteScroll from 'react-infinite-scroll-component';
 import InfiniteScroll from 'react-infinite-scroller';
 
 
@@ -23,16 +22,7 @@ export const Header =()=> {
     const subState = useSelector(selectSubReddit);
     const childrenArray = useSelector(selectFirstChildren);
 
-    //Loads content on page load
-    //useEffect(async ()=> {
-    //    const json = await Reddit.populateReddit()
-    //    const childVar = await json.data.children
-    //    setResults(json)
-    //    dispatch(setFirstChildren(childVar))
-    //    //setChildrenArray(childVar)
-    //    setNextAfter(json.data.after)
-    //    //window.scrollTo(0, 0);
-    //}, [subState, dispatch])
+    //Fetches content from home page on initial render and each time subState(Sub Reddit endpoint) changes
     useEffect(()=> {
         async function populateReddit() {
         const data = await fetch(`https://www.reddit.com/${subState}.json`);
@@ -43,7 +33,6 @@ export const Header =()=> {
         setNextAfter(jsonData.data.after)
     }
     populateReddit();
-    
     }, [subState, dispatch])
 
     //Loads subReddit from dropdown menu
@@ -126,31 +115,15 @@ export const Header =()=> {
             </div>
             <SubMenu display={display} handleSubChange={handleSubChange} searchSubChange={searchSubChange}
             handleDisplay={handleDisplay}/>
-                {/*<InfiniteScroll
-                dataLength={!results ? null :
-                            !results.data ? null : 
-                            childrenArray.length} 
-                next={loadMore}
-                hasMore={true}
-                loader={<h4>Loading...</h4>}
-                endMessage={
-                    <p style={{ textAlign: 'center' }}>
-                      <b>Yay! You have seen it all</b>
-                    </p>
-                  }>
-                    
-        
-                    <Search results={results} children={childrenArray} handleSubChange={handleSubChange}  loadMore={loadMore}
-                    className="search"/>
-                </InfiniteScroll>*/}
+   
             <InfiniteScroll
                 pageStart={0}
                 loadMore={loadMore}
                 hasMore={true}
                 loader={<img className="loader" key={0} src={redditLogo} alt=""/>}
                 threshold={2000}
-                initialLoad={false}
->
+                initialLoad={false}>
+                    
             <Search results={results} children={childrenArray} handleSubChange={handleSubChange}  loadMore={loadMore}
                     className="search"/>
             </InfiniteScroll>
