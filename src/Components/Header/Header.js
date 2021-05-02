@@ -9,7 +9,7 @@ import searchIcon from "./search-icon.png";
 import hamburger from './hamburger-clear.png';
 import {chooseSub, selectSubReddit} from "../../Features/subRedditSlice";
 import {selectFirstChildren, setFirstChildren, setNextChildren} from "../../Features/childrenSlice";
-import {selectSearch, setSearchState} from "../../Features/searchSlice"
+import {setSearchState} from "../../Features/searchSlice"
 import InfiniteScroll from 'react-infinite-scroller';
 
 
@@ -22,7 +22,6 @@ export const Header =()=> {
     const [nextAfter, setNextAfter] = useState('');
     const subState = useSelector(selectSubReddit);
     const childrenArray = useSelector(selectFirstChildren);
-    const searchState = useSelector(selectSearch);
 
     //Fetches content from home page on initial render and each time subState(Sub Reddit endpoint) changes
     useEffect(()=> {
@@ -35,7 +34,7 @@ export const Header =()=> {
         setNextAfter(jsonData.data.after)
     }
     populateReddit();
-    }, [subState])
+    }, [subState, dispatch])
 
     //Loads subReddit from dropdown menu
     const handleSubChange =(e)=> {
@@ -50,22 +49,14 @@ export const Header =()=> {
     //Search all of Reddit or within subReddit
     const handleSubmit = async ()=> {
             dispatch(setSearchState(searchTerm))
-            const data = await fetch(`https://www.reddit.com/${subState}search.json?q=${searchState}&restrict_sr=on`);  
+            const data = await fetch(`https://www.reddit.com/${subState}search.json?q=${searchTerm}&restrict_sr=on`);  
             const jsonData = await data.json();
             const childVar = await jsonData.data.children
-            //setResults(jsonData)
+            setResults(jsonData)
             dispatch(setFirstChildren(childVar))
+            setNextAfter(jsonData.data.after)
             setSearchTerm('');
             window.scrollTo(0, 0);
-            //return jsonData;
-
-        
-        //Reddit.searchReddit(searchTerm)
-        //.then(data => setResults(data));
-        //This is a test that might not work
-        //dispatch(setFirstChildren(results.data.children))
-        //setSearchTerm('');
-        //window.scrollTo(0, 0);
     }
     
     //Toggles subReddit Menu displaying
