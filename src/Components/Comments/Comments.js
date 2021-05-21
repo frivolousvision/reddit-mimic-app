@@ -27,4 +27,4 @@ export const Comments =(props)=> {
             <p className="comment-votes">{upVotes}</p>
         </div>
     )
-}
+}  

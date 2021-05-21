@@ -87,14 +87,25 @@ export const Results =(props)=> {
                     <p onClick={readMore} className="read-more">Read More</p>}
                     {!props.searchResults.data.selftext ? null : 
                     <p className={showReadMore ? "show-selftext" : "hide-selftext"}>{props.searchResults.data.selftext}</p>}
-
                     {!props.searchResults.data ? <img className="loading" src={redditLogo} alt=""/> :
+
+                    //VIDEO
                     props.searchResults.data.is_video === true ?
                         <video controls>
                         <source src={props.searchResults.data.secure_media.reddit_video.fallback_url} type="video/mp4"/>
-                        </video> : 
+                        </video> :
+                    props.searchResults.data.preview && 
+                    props.searchResults.data.preview.reddit_video_preview &&
+                    props.searchResults.data.preview.reddit_video_preview.fallback_url ? 
+                    <video controls>
+                    <source src={props.searchResults.data.preview.reddit_video_preview.fallback_url} type="video/mp4"/>
+                    </video> :
+                    
+                    //GIFS
                     props.searchResults.data.secure_media_embed.media_domain_url ? 
                     <embed className="gifs" src={props.searchResults.data.secure_media_embed.media_domain_url} alt=""/> :
+                    
+                    //IMAGE
                     <a href={props.searchResults.data.url}><img src={props.searchResults.data.url} alt=""/></a> }
                     
                     <div className="comments-and-percent">
