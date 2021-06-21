@@ -41,4 +41,7 @@
   .sub-menu-link {
     right: 2vw;
   }
+  .close-button {
+    margin-bottom: 7vh;
+  }
 }
