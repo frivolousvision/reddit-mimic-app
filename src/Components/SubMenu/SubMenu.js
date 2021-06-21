@@ -130,6 +130,11 @@ export const SubMenu = (props) => {
             r/pics
           </span>
         </div>
+        <div className='sub-link-box close-button'>
+          <span onClick={props.handleDisplay} className='sub-link'>
+            &times;
+          </span>
+        </div>
       </div>
     </div>
   );
