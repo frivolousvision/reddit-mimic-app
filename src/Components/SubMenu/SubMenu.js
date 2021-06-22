@@ -27,12 +27,8 @@ export const SubMenu = (props) => {
     >
                     
                 </input>*/}
-        <div className='sub-link-box'>
-          <span
-            onClick={clickEvent}
-            className='sub-link first-link'
-            data-sub='r/art/'
-          >
+        <div className='sub-link-box first-link'>
+          <span onClick={clickEvent} className='sub-link' data-sub='r/art/'>
             r/Art
           </span>
         </div>
